@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giusy & Antonio</title>
+<style>
+body{
+margin:0;
+font-family: Georgia, serif;
+background:#f4f6f1;
+color:#2f2f2f;
+text-align:center;
+}
+.card{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+h1{
+font-size:40px;
+margin-top:30px;
+}
+button{
+background:#a8bfa3;
+border:none;
+padding:12px 18px;
+border-radius:20px;
+margin:5px;
+}
+.envelope{
+font-size:60px;
+margin-top:120px;
+cursor:pointer;
+}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<div id="home">
+<div class="envelope" onclick="openInvite()"> </div>
+<p>Clicca per aprire</p>
+</div>
+<div id="invite" class="hidden">
+<h1>Giusy & Antonio</h1>
+<p><i>Due anime, un solo cuore.<br>Il nostro amore diventa promessa.</i></p>
+<div class="card">
+<b>Cerimonia</b><br>
+09 Luglio 2027 - 10:30<br>
+Chiesa Santa Barbara, Paternò
+<br><br>
+Apri Mappa
+</button>
+</div>
+<button onclick="openMap('https://maps.google.com?q=Chiesa+Santa+Barbara+Paternò')">
+<div class="card">
+<b>Ricevimento</b><br>
+Villa Oasis - Acireale
+<br><br>
+Apri Mappa
+</button>
+</div>
+<button onclick="openMap('https://maps.google.com?q=Villa+Oasis+Acireale')">
+<div class="card">
+<b>RSVP</b><br><br>
+<input id="name" placeholder="Nome famiglia"><br><br>
+<select id="guests">
+<option>1 persona</option>
+<option>2 persone</option>
+<option>3 persone</option>
+<option>4 persone</option>
+<option>5 persone</option>
+</select><br><br>
+<button onclick="send()">Invia conferma</button>
+</div>
+</div>
+<script>
+function openInvite(){
+document.getElementById("home").style.display="none";
+document.getElementById("invite").classList.remove("hidden");
+}
+function openMap(url){
+window.open(url,'_blank');
+}
+function send(){
+let name=document.getElementById("name").value;
+let guests=document.getElementById("guests").value;
+let text=`Conferma matrimonio:
+Nome: ${name}
+Invitati: ${guests}`;
+window.location.href=
+`mailto:giusepparitapaterno97@gmail.com?subject=RSVP Matrimonio&body=$
+{encodeURIComponent(text)}`;
+}
+</script>
+</body>
+</html>
